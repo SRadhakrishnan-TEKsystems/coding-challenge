@@ -1,5 +1,7 @@
 package coding.challenge.rest;
 
+import coding.challenge.countries.CapitalCity;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -15,14 +17,14 @@ public class CapitalCityRequest {
         String finalPATH = PATH+countryInput;
         client = ClientBuilder.newBuilder()
                 .build();
-        target = client.target(UriBuilder.fromPath(finalPATH).queryParam("fields","capital"));
+        target = client.target(UriBuilder.fromPath(finalPATH).queryParam("fullText","true"));
     }
 
     public static CapitalCityRequest getInstance(String countryInput) {
         return new CapitalCityRequest(countryInput);
     }
 
-    public CapitalCityResponse getCapitalCity() {
+    public CapitalCity getCapitalCity() {
         Response response = null;
         try {
             response = target.request().get();
@@ -30,7 +32,7 @@ public class CapitalCityRequest {
             e.printStackTrace();
         }
 
-        CapitalCityResponse capitalCity = CapitalCityResponse.getInstance(response).getCountries();
+        CapitalCity capitalCity = CapitalCityResponse.getInstance(response).getCountries();
         return capitalCity;
     }
 }

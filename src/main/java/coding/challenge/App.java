@@ -1,6 +1,7 @@
 
 package coding.challenge;
 
+import coding.challenge.countries.CapitalCity;
 import coding.challenge.rest.CapitalCityRequest;
 import coding.challenge.rest.CapitalCityResponse;
 
@@ -32,8 +33,8 @@ public class App {
         if (userInput == 1) {
             System.out.println(app.promptForInput());
             String countryInput = app.readInput();
-            CapitalCityResponse capitalCity = CapitalCityRequest.getInstance(countryInput).getCapitalCity();
-            app.outputCapitalCity(capitalCity);
+            CapitalCity capitalCity = CapitalCityRequest.getInstance(countryInput).getCapitalCity();
+            app.outputCapitalCity(countryInput,capitalCity);
         } else if (userInput == 2) {
             quit = true;
             scanner.close();
@@ -42,8 +43,8 @@ public class App {
         return quit;
     }
 
-    private void outputCapitalCity(CapitalCityResponse capitalCity) {
-        System.out.println(capitalCity);
+    private void outputCapitalCity(String countryInput, CapitalCity capitalCity) {
+        System.out.println("The capital city of "+ countryInput.toUpperCase() +" is "+capitalCity);
     }
 
     public String promptForInput() {

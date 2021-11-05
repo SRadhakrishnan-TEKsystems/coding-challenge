@@ -3,12 +3,21 @@
  */
 package coding.challenge;
 
-import org.testng.annotations.*;
-import static org.testng.Assert.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertNotNull;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
+    @Test
+    public void appAsksForInput() {
         App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+        assertNotNull(classUnderTest.promptForInput(), "app should prompt for a country");
+    }
+    @Test
+    public void getsUserInput(){
+        String expected ="test";
+        String actual= new App().readInput();
+        Assert.assertEquals(actual,expected);
     }
 }

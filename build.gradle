@@ -17,7 +17,9 @@ dependencies {
 application {
     mainClassName = 'coding.challenge.App'
 }
-
+run {
+    standardInput = System.in
+}
 test {
     useTestNG()
 }

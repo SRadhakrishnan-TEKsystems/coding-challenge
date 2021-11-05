@@ -9,9 +9,11 @@ import java.util.List;
 
 public class CapitalCityResponse {
     private final String body;
+    private final int statusCode;
 
     private CapitalCityResponse(Response response){
         body = response != null ? response.readEntity(String.class) : null;
+        statusCode = response.getStatus();
     }
 
     public static CapitalCityResponse getInstance(Response response) {
@@ -20,7 +22,9 @@ public class CapitalCityResponse {
 
     public CapitalCity getCountries() {
         Gson gson = new Gson();
-       List<CapitalCity> capitalCityList=gson.fromJson(body, new TypeToken<List<CapitalCity>>() {}.getType());
-        return capitalCityList.get(0);
-    }
-}
+        if(statusCode==200) {
+            List<CapitalCity> capitalCityList = gson.fromJson(body, new TypeToken<List<CapitalCity>>() {
+            }.getType());
+            return capitalCityList.get(0);
+        }else return null;
+}}

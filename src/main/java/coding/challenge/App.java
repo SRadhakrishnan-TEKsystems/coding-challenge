@@ -44,7 +44,9 @@ public class App {
     }
 
     private void outputCapitalCity(String countryInput, CapitalCity capitalCity) {
-        System.out.println("The capital city of "+ countryInput.toUpperCase() +" is "+capitalCity);
+        String output;
+        output = capitalCity != null ? "The capital city of " + countryInput.toUpperCase() + " is " + capitalCity : "Invalid name for country";
+        System.out.println(output);
     }
 
     public String promptForInput() {

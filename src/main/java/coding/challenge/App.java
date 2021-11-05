@@ -54,9 +54,8 @@ public class App {
     String readInput() {
         String countryInput = "";
         if (scanner.hasNext()) {
-            countryInput = scanner.next();
+            countryInput = scanner.nextLine();
         }
-        System.out.println("You entered " + countryInput);
         return countryInput;
     }
 }

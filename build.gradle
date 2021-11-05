@@ -1,0 +1,23 @@
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:29.0-jre'
+
+    testImplementation 'org.testng:testng:7.3.+'
+}
+
+application {
+    mainClassName = 'coding.challenge.App'
+}
+
+test {
+    useTestNG()
+}

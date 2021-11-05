@@ -14,10 +14,4 @@ public class AppTest {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.promptForInput(), "app should prompt for a country");
     }
-    @Test
-    public void getsUserInput(){
-        String expected ="test";
-        String actual= new App().readInput();
-        Assert.assertEquals(actual,expected);
-    }
 }
